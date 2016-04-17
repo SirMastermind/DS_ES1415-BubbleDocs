@@ -1,0 +1,12 @@
+This document regards the planned work of the group through the week of _20/04/15_ to _26/04/15_.
+
+## Work Table  
+
+| Element           | IST Number | M | T | W   | T | F   | S | S | Issues to do   | Issues done    |
+|-------------------|------------|---|---|-----|---|-----|---|---|----------------|----------------|
+| Tomás Alves       | 75541      |   |   |     |   | 3   |   |   | 62, 63, 66     | 62, 63, 66     |
+| Miguel Santos     | 75551      |   |   |     |   | 3   |   | 1 | 82, 83, 84     | 82, 83, 84     |
+| Andriy Zabolotnyy | 75624      |   | 1 | 0.5 |   | 1.5 |   |   | 48, 74, 76, 77 | 48, 77, 76, 74 |
+| Pedro Joaquim     | 75666      |   |   | 1   |   | 3   |   |   | 65, 68, 69, 96 | 96, 68, 65, 69 |
+| Tiago Rechau      | 76231      |   |   |     |   | 3   |   | 1 | 78, 80, 81     | 78, 80, 81     |
+| Diogo Calado      | 76366      |   |   |     |   | 3   |   |   | 64, 71, 73     | 64, 71, 73     |

@@ -1,0 +1,29 @@
+This document regards the review of the week of _27/04/15_ to _03/05/15_ and the planned work of the group through the week of _04/05/15_ to _10/05/15_.
+
+## Final Analysis  
+### Individual Analysis
+
+| Element           | IST Number | Total working hours | % Issues Completed |
+|-------------------|------------|---------------------|--------------------|
+| Tomás Alves       | 75541      | 6 		       | 87,5 (7/8)         |
+| Miguel Santos     | 75551      | 6                   | 100 (5/5)          |
+| Andriy Zabolotnyy | 75624      | 5                   | 100 (4/4)          |
+| Pedro Joaquim     | 75666      | 4                   | 100 (6/6)          |
+| Tiago Rechau      | 76231      | 4                   | 100 (5/5)          |
+| Diogo Calado      | 76366      | 5                   | 100 (4/4)          |
+ 
+### Group Analysis  
+**Total number of hours of effective work**: 30h  
+**Global overall**: 97,92% (31/32) of the issues where completed.  
+**Comments**: Everything ended up well this week. The issues were almost completely fulfilled, only one of the thirty two wasn't closed. This delay is due to the necessity to clarify with the laboratories' teacher the given requisites of the project. The next class is May the 4th, the problem will be discussed there and hopefully enlightened. The group worked in both the Software Engineering’s project and the Distributed Systems one.
+
+## Work Table  
+
+| Element           | IST Number | M | T | W | T | F | S | S | Issues to do                           | Issues done                            |
+|-------------------|------------|---|---|---|---|---|---|---|----------------------------------------|----------------------------------------|
+| Tomás Alves       | 75541      | 2 |   | 3 |   | 2 | 4 | 2 | 119, 123, 133, 152, 155, 156           | 119, 123, 133, 152, 155, 156           |
+| Miguel Santos     | 75551      |   | 3 | 2 | 2 |   |   |   | 131, 132, 147, 148, 151, 154, 157, 158 | 131, 132, 147, 148, 151, 154, 157, 158 |
+| Andriy Zabolotnyy | 75624      | 1 | 2 |   | 2 |   | 3 | 2 | 150, 167, 169, 170                     | 150, 167, 169, 170                     |
+| Pedro Joaquim     | 75666      | 1 |   | 1 |   | 2 |   | 2 | 161, 166, 150                          | 161, 166, 150                          |
+| Tiago Rechau      | 76231      | 2 | 3 |   |   | 3 |   |   | 145, 146, 149, 153                     | 145, 146, 149, 153                     |
+| Diogo Calado      | 76366      | 1 | 2 | 2 | 2 | 1 |   |   | 162, 163                               | 162, 163                               |

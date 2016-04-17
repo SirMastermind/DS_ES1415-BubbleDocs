@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+WSDL contract of the SD-Store service
+
+This WSDL defines the operations provided by the Web Service,
+and cannot be modified.
+
+For more information, consult sections
+wsdl:service, wsdl:portType, wsdl:types and wsdl:binding below
+
+Version 1.0
+
+Version history:
+1.0 - 2015-03-16 - initial version
+1.1 - 2015-03-20 - removed nillable=true
+                 - separated message elements for faults
+                 - created empty complex types for empty responses to enable wrapper style
+-->
+
+<wsdl:definitions name="SdStore"
+  targetNamespace="urn:pt:ulisboa:tecnico:sdis:store:ws"
+  xmlns:tns="urn:pt:ulisboa:tecnico:sdis:store:ws"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soaphttp="http://schemas.xmlsoap.org/soap/http"
+  xmlns:wsamd="http://www.w3.org/2007/05/addressing/metadata">
+
+  <wsdl:types>
+
+    <!--
+    Data type definitions
+    -->
+
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+      targetNamespace="urn:pt:ulisboa:tecnico:sdis:store:ws">
+
+      <xs:complexType name="docUserPair">
+        <xs:sequence>
+          <xs:element name="documentId" type="xs:string"/>
+          <xs:element name="userId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="createDoc" type="tns:createDoc"/>
+      <xs:complexType name="createDoc">
+        <xs:sequence>
+          <xs:element name="docUserPair" type="tns:docUserPair"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="createDocResponse" type="tns:createDocResponse"/>
+      <xs:complexType name="createDocResponse" />
+
+      <xs:element name="listDocs" type="tns:listDocs"/>
+      <xs:complexType name="listDocs">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="listDocsResponse" type="tns:listDocsResponse"/>
+      <xs:complexType name="listDocsResponse">
+        <xs:sequence>
+          <xs:element name="documentId" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="store" type="tns:store"/>
+      <xs:complexType name="store">
+        <xs:sequence>
+          <xs:element name="docUserPair" type="tns:docUserPair"/>
+          <xs:element name="contents" type="xs:base64Binary"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="storeResponse" type="tns:storeResponse"/>
+      <xs:complexType name="storeResponse" />
+
+      <xs:element name="load" type="tns:load"/>
+      <xs:complexType name="load">
+        <xs:sequence>
+          <xs:element name="docUserPair" type="tns:docUserPair"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="loadResponse" type="tns:loadResponse"/>
+      <xs:complexType name="loadResponse">
+        <xs:sequence>
+          <xs:element name="contents" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when user already exists.
+      -->
+      <xs:element name="userAlreadyExists" type="tns:userAlreadyExists" />
+      <xs:complexType name="userAlreadyExists">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when user does not exist.
+      -->
+      <xs:element name="userDoesNotExist" type="tns:userDoesNotExist" />
+      <xs:complexType name="userDoesNotExist">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when document already exists.
+      -->
+      <xs:element name="docAlreadyExists" type="tns:docAlreadyExists" />
+      <xs:complexType name="docAlreadyExists">
+        <xs:sequence>
+          <xs:element name="docId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when document does not exist.
+      -->
+      <xs:element name="docDoesNotExist" type="tns:docDoesNotExist" />
+      <xs:complexType name="docDoesNotExist">
+        <xs:sequence>
+          <xs:element name="docId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when a store operation exceeds the allowed capacity in the user's repository.
+      -->
+      <xs:element name="CapacityExceeded" type="tns:CapacityExceeded" />
+      <xs:complexType name="CapacityExceeded">
+        <xs:sequence>
+          <xs:element name="currentSize" type="xs:int" minOccurs="0" />
+          <xs:element name="allowedCapacity" type="xs:int" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+    </xs:schema>
+  </wsdl:types>
+
+  <!--
+  The messages below use the elements defined in the xs:schema
+  -->
+  <wsdl:message name="createDoc">
+    <wsdl:part name="parameters" element="tns:createDoc"/>
+  </wsdl:message>
+  <wsdl:message name="createDocResponse">
+    <wsdl:part name="parameters" element="tns:createDocResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="listDocs">
+    <wsdl:part name="parameters" element="tns:listDocs"/>
+  </wsdl:message>
+  <wsdl:message name="listDocsResponse">
+    <wsdl:part name="parameters" element="tns:listDocsResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="store">
+    <wsdl:part name="parameters" element="tns:store"/>
+  </wsdl:message>
+  <wsdl:message name="storeResponse">
+    <wsdl:part name="parameters" element="tns:storeResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="load">
+    <wsdl:part name="parameters" element="tns:load"/>
+  </wsdl:message>
+  <wsdl:message name="loadResponse">
+    <wsdl:part name="parameters" element="tns:loadResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="UserAlreadyExists">
+    <wsdl:part name="fault" element="tns:userAlreadyExists" />
+  </wsdl:message>
+
+  <wsdl:message name="UserDoesNotExist">
+    <wsdl:part name="fault" element="tns:userDoesNotExist" />
+  </wsdl:message>
+
+  <wsdl:message name="DocAlreadyExists">
+    <wsdl:part name="fault" element="tns:docAlreadyExists" />
+  </wsdl:message>
+
+  <wsdl:message name="DocDoesNotExist">
+    <wsdl:part name="fault" element="tns:docDoesNotExist" />
+  </wsdl:message>
+
+  <wsdl:message name="CapacityExceeded">
+    <wsdl:part name="fault" element="tns:CapacityExceeded" />
+  </wsdl:message>
+
+
+  <wsdl:portType name="SDStore">
+
+    <!--
+    Creates a new document in the provided user's repository.
+    In case this is the first operation on that user, a new repository is created for the new user.
+    Faults: a document already exists with the same id
+    -->
+    <wsdl:operation name="createDoc">
+      <wsdl:input message="tns:createDoc" name="createDoc"/>
+      <wsdl:output message="tns:createDocResponse" name="createDocResponse"/>
+      <wsdl:fault message="tns:DocAlreadyExists" name="DocAlreadyExists" />
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+    </wsdl:operation>
+
+    <!--
+    Lists the document ids of the user's repository.
+    Faults: user does not exist
+    -->
+    <wsdl:operation name="listDocs">
+      <wsdl:input message="tns:listDocs" name="listDocs"/>
+      <wsdl:output message="tns:listDocsResponse" name="listDocsResponse"/>
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+    </wsdl:operation>
+
+    <!--
+    Replaces the entire contents of the document by the contents provided as argument.
+    Faults: document does not exist, user does not exist, 
+    repository storage capacity of the user is exceeded.
+    -->
+    <wsdl:operation name="store">
+      <wsdl:input message="tns:store" name="store"/>
+      <wsdl:output message="tns:storeResponse" name="storeResponse"/>
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+      <wsdl:fault message="tns:DocDoesNotExist" name="DocDoesNotExist" />
+    </wsdl:operation>
+
+    <!--
+    Returns the current contents of the document.
+    Fault: user or document do not exist
+    -->
+    <wsdl:operation name="load">
+      <wsdl:input message="tns:load" name="load"/>
+      <wsdl:output message="tns:loadResponse" name="loadResponse"/>
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+      <wsdl:fault message="tns:DocDoesNotExist" name="DocDoesNotExist" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="SDStoreServiceSoapBinding" type="tns:SDStore">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createDoc">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DocAlreadyExists">
+        <soap:fault name="DocAlreadyExists" use="literal" />
+      </wsdl:fault>
+			<wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="listDocs">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="store">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+      <wsdl:fault name="DocDoesNotExist">
+        <soap:fault name="DocDoesNotExist" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="load">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+      <wsdl:fault name="DocDoesNotExist">
+        <soap:fault name="DocDoesNotExist" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="SDStore">
+    <wsdl:port name="SDStoreImplPort" binding="tns:SDStoreServiceSoapBinding">
+      <soap:address location="http://localhost:8080/store-ws/endpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

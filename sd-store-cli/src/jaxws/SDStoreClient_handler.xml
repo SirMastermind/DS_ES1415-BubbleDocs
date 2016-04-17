@@ -1,0 +1,14 @@
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+    <handler-chain>
+    	<handler>
+            <handler-class>pt.ulisboa.tecnico.sdis.ws.handler.TagHandler</handler-class>
+        </handler>
+        <handler>
+            <handler-class>pt.ulisboa.tecnico.sdis.ws.handler.CypherHandler</handler-class>
+        </handler>
+        <handler>
+        	<handler-class>pt.ulisboa.tecnico.sdis.ws.handler.KerberosHandler</handler-class>
+    	</handler>
+    </handler-chain>
+    
+</handler-chains>

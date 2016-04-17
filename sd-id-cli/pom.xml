@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pt.ulisboa.tecnico.essd</groupId>
+        <artifactId>distributed-bubbledocs</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>sd-id-cli</artifactId>
+    <packaging>jar</packaging>
+
+    <name>ID WebService Client</name>
+
+    <properties>
+        <main.exec.classname>pt.ulisboa.tecnico.sdis.id.SDIdClientMain</main.exec.classname>
+        <wsdl.directory>${basedir}/../sd-id/src/main/resources</wsdl.directory>
+        <wsdl.filename>SD-ID.1_1.wsdl</wsdl.filename>
+
+        <ws.name>${id.name}</ws.name>
+    </properties>
+
+    <dependencies>
+        <!-- kerberos-lib -->
+        <dependency>
+            <groupId>pt.ulisboa.tecnico.sdis.protocol</groupId>
+            <artifactId>kerberos</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- PersistanceManager -->
+        <dependency>
+            <groupId>pt.ulisboa.tecnico.sdis.PersistenceManager</groupId>
+            <artifactId>PersistenceManager</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- JAX-WS -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+        </dependency>
+        <!-- UDDI -->
+        <dependency>
+            <groupId>pt.ulisboa.tecnico.essd</groupId>
+            <artifactId>uddi-naming</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- SOAP Handlers -->
+        <dependency>
+            <groupId>pt.ulisboa.tecnico.essd</groupId>
+            <artifactId>ws-handlers</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <arguments>
+                        <argument>${uddi.url}</argument>
+                        <argument>${ws.name}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+        
+        
+        
+
+       

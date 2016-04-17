@@ -1,0 +1,30 @@
+
+This document regards the review of the week of _27/04/15_ to _03/05/15_ and the planned work of the group through the week of _11/05/15_ to _13/05/15_.
+
+## Final Analysis  
+### Individual Analysis
+
+| Element           | IST Number | Total working hours | % Issues Completed |
+|-------------------|------------|---------------------|--------------------|
+| Tomás Alves       | 75541      | 13                  | 100                |
+| Miguel Santos     | 75551      | 9                   | 100                |
+| Andriy Zabolotnyy | 75624      | 10                  | 100                |
+| Pedro Joaquim     | 75666      | 6                   | 100                |
+| Tiago Rechau      | 76231      | 8                   | 100                |
+| Diogo Calado      | 76366      | 8                   | 100                |
+
+### Group Analysis  
+**Total number of hours of effective work**: 54h  
+**Global overall**: 100% of the issues where completed.
+**Comments**: Everything ended up well this week. The issues were completely fulfilled and there where no delays to be taken care of. The group worked in both the Software Engineering’s project and the Distributed Systems one.
+
+## Work Table  
+
+| Element           | IST Number | M | T | W | Issues to do | Issues done |
+|-------------------|------------|---|---|---|--------------|-------------|
+| Tomás Alves       | 75541      | 6 | 8 | 2 | 118, 120, 121, 123, 124, 125, 127, 159 | 120, 123 |
+| Miguel Santos     | 75551      | 4 | 8 |   | 113, 116, 165, 175 | 113, 116, 165, 175 |
+| Andriy Zabolotnyy | 75624      | 4 | 5 |   | 169, 170, 171, 172, 173, 174, 176, 179  | 169, 170, 171, 172, 173, 174, 176, 179 |
+| Pedro Joaquim     | 75666      | 3 | 6 |   | 177, 185 | 177, 185 | | 
+| Tiago Rechau      | 76231      | 3 | 3 |  | 168, 178 | 168, 178 |
+| Diogo Calado      | 76366      | 3 | 8 |   | 115, 116, 186 | 115, 116, 186 |

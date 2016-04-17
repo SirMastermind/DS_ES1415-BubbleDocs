@@ -1,0 +1,237 @@
+package pt.tecnico.bubbledocs.domain;
+
+class BubbleDocsServer{
+	int sheetNewID;
+}
+
+
+class User {
+	String name;
+	String username;
+	String password;
+	String email;
+	boolean validPassword;
+}
+
+class SessionManager;
+
+class Session{
+  String token;
+  LocalTime lastAccess;
+}
+
+class Sheet {
+	String name;
+	LocalDate creationDate;
+	int id;
+	int rows;
+	int columns;
+}
+
+class Cell {
+	boolean isProtected;
+  int column;
+  int row;
+}
+
+class Range;
+
+
+class Content;
+
+class Literal extends Content{
+	int value;
+}
+class Reference extends Content;
+class Function extends Content;
+class NullContent extends Content;
+
+class Argument;
+
+class ReferenceArg extends Argument;
+class LiteralArg extends Argument{
+	int value;
+}
+
+
+class BinaryFunction extends Function;
+class RangeFunction extends Function;
+
+
+class ADD extends BinaryFunction;
+class SUB extends BinaryFunction;
+class MUL extends BinaryFunction;
+class DIV extends BinaryFunction;
+class AVG extends RangeFunction;
+class PRD extends RangeFunction;
+
+
+
+relation DomainRootHasBubbleDocsApplication {
+  .pt.ist.fenixframework.DomainRoot playsRole root {
+    multiplicity 1;
+  }
+  BubbleDocsServer playsRole bubbleDocsServer {
+    multiplicity 1;
+  }
+}
+
+
+relation BubbleDocsServerContainsUsers {
+  BubbleDocsServer playsRole bd{
+  	multiplicity 1;
+  }
+  User playsRole users {
+  	multiplicity *;
+  }
+}
+
+relation BubbleDocsServerContainsSessionManager {
+  BubbleDocsServer playsRole bd{
+  	multiplicity 1;
+  }
+  SessionManager playsRole sessionManager {
+    multiplicity 1;
+  }
+}
+
+
+
+relation BubbleDocsServerContainsSheet {
+  BubbleDocsServer playsRole bd4{
+  	multiplicity 1;
+  }
+  Sheet playsRole sheets {
+    multiplicity *;
+  }
+}
+
+
+
+relation UserContainsOwnedSheet {
+  User playsRole owner{
+  	multiplicity 1;
+  }
+  Sheet playsRole ownedSheets {
+    multiplicity *;
+  }
+}
+
+relation UserContainsReadModeSheets{
+	User playsRole readUser{
+		multiplicity *;
+	}
+	Sheet playsRole readModeSheets {
+   		multiplicity *;
+	}	
+}
+
+relation UserContainsWriteModeSheets{
+	User playsRole writeUser{
+		multiplicity *;
+	}
+	Sheet playsRole writeModeSheets {
+   		multiplicity *;
+	}	
+}
+
+
+relation SheetContainsCells {
+  Sheet playsRole sh{
+  	multiplicity 1;
+  }
+  Cell playsRole cells {
+    multiplicity *;
+  }
+}
+
+relation SessionManagerContainsSession {
+  SessionManager playsRole sm{
+  	multiplicity 1;
+  }
+  Session playsRole sessions {
+    multiplicity *;
+  }
+}
+
+relation SessionContainsUser{
+	Session playsRole session{
+		multiplicity 1;
+	}
+	User playsRole user{
+		multiplicity 1;
+	}
+}
+
+relation RangeContainsCells {
+  Range playsRole r{
+  	multiplicity *;
+  }
+  Cell playsRole cells {
+    multiplicity *;
+  }
+}
+
+
+
+relation CellContainsContent {
+  Cell playsRole c{
+  	multiplicity 1;
+  }
+  Content playsRole content {
+    multiplicity 1;
+  }
+}
+
+
+relation ReferenceContainsCell {
+  Reference playsRole r2{
+  	multiplicity *;
+  }
+  Cell playsRole cell {
+    multiplicity 1;
+  }
+}
+
+
+relation RangeFunctionContainsRange {
+  RangeFunction playsRole rf{
+  	multiplicity 1;
+  }
+  Range playsRole args {
+    multiplicity 1;
+  }
+}
+
+relation BinaryFunctionContainsArguments{
+	BinaryFunction playsRole bf{
+  	multiplicity 1;
+  }
+	Argument playsRole leftValue {
+		multiplicity 1;
+	}
+}
+
+relation BinaryFunctionContainsArguments2{
+	BinaryFunction playsRole bf2{
+  	    multiplicity 1;
+    }
+	Argument playsRole rightValue {
+		multiplicity 1;
+	}
+}
+
+relation ReferenceArgContainsCell {
+  ReferenceArg playsRole refArg{
+  	multiplicity *;
+  }
+  Cell playsRole cell {
+    multiplicity 1;
+  }
+}
+
+
+
+
+
+

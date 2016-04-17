@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- http://maven.apache.org/pom.html#Quick_Overview -->
+
+    <groupId>pt.ulisboa.tecnico.sdis.PersistenceManager</groupId>
+    <artifactId>PersistenceManager</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.org.jdom.jdom>2.0.5</version.org.jdom.jdom>
+    </properties>
+    <dependencies>
+    	<dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+            <version>${version.org.jdom.jdom}</version>
+        </dependency>
+        <dependency>
+	      <groupId>pt.ulisboa.tecnico.sdis.protocol</groupId>
+	      <artifactId>kerberos</artifactId>
+	      <version>1.0</version>
+    	</dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <!-- plugin management defines common settings -->
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.3.2</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>java</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- to prevent deprecation warning: -->
+                        <killAfter>-1</killAfter>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+ </project>

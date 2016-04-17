@@ -1,0 +1,29 @@
+This document regards the review of the week of _20/04/15_ to _26/04/15_ and the planned work of the group through the week of _27/04/15_ to _03/05/15_.
+
+## Final Analysis  
+### Individual Analysis
+
+| Element           | IST Number | Total working hours | % Issues Completed |
+|-------------------|------------|---------------------|--------------------|
+| Tomás Alves       | 75541      | 3 		       | 100 (3/3)          |
+| Miguel Santos     | 75551      | 4                   | 100 (3/3)          |
+| Andriy Zabolotnyy | 75624      | 3                   | 100 (4/4)          |
+| Pedro Joaquim     | 75666      | 4                   | 100 (4/4)          |
+| Tiago Rechau      | 76231      | 4                   | 100 (3/3)          |
+| Diogo Calado      | 76366      | 3                   | 100 (3/3)          |
+ 
+### Group Analysis  
+**Total number of hours of effective work**: 21h  
+**Global overall**: 100% (20/20) of the issues were completed.
+**Comments**: Everything ended up well this week. The issues were completely fulfilled and there where no delays to be taken care of. The group only worked in the Software Engineering’s project.
+
+## Work Table  
+
+| Element           | IST Number | M   | T | W | T | F | S | S | Issues to do 			       | Issues done |
+|-------------------|------------|-----|---|---|---|---|---|---|---------------------------------------|-------------|
+| Tomás Alves       | 75541      | 2   | 2 |   |   |   |   | 2 | 67, 90, 91, 92, 97, 98, 119, 128, 133 | 67, 90, 97  |
+| Miguel Santos     | 75551      | 2   |   | 2 |   |   |   | 2 | 93, 94, 100, 130, 135                 | 93, 100     |
+| Andriy Zabolotnyy | 75624      | 0.5 |   | 1 |   | 2 |   | 2 | 75, 79, 142	                       | 142         |
+| Pedro Joaquim     | 75666      |     |   |   |   | 2 |   | 2 | 70, 72, 99 			       | 136         |
+| Tiago Rechau      | 76231      |     |   | 2 |   | 2 |   |   | 89, 85, 56 		               |             |
+| Diogo Calado      | 76366      |     |   | 1 |   | 2 |   | 2 | 86, 87, 88 			       |             |

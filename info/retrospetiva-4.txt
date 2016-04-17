@@ -1,0 +1,18 @@
+This page regards the of the week _11/05/15_ to _13/05/15_.
+
+## Final Analysis  
+### Individual Analysis
+
+| Element           | IST Number | Total working hours | % Issues Completed |
+|-------------------|------------|---------------------|--------------------|
+| Tomás Alves       | 75541      | 16 | 100 |
+| Miguel Santos     | 75551      | 12 | 100 |
+| Andriy Zabolotnyy | 75624      | 9 | 100 |
+| Pedro Joaquim     | 75666      | 9 | 100 |
+| Tiago Rechau      | 76231      | 6 | 100 |
+| Diogo Calado      | 76366      | 11 | 100 |
+
+### Group Analysis  
+**Total number of hours of effective work**: 63h  
+**Global overall**: 100% of the issues where completed.  
+**Comments**: Everything ended up well in the beginning of this week, we ended the integration between both projects. Unfortunately, in the morning of Wednesday, several bugs were exposed and we were unable o fix them in time. The issues were completely fulfilled and there where no delays to be taken care of, since the creation of new issues and the actions to fix the bugs weren't complete in time to release. The group worked in both the Software Engineering’s project and the Distributed Systems one.

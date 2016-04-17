@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+WSDL contract of the SD-Id service
+
+This WSDL defines the operations provided by the Web Service,
+and cannot be modified.
+
+For more information, consult sections
+wsdl:service, wsdl:portType, wsdl:types and wsdl:binding below
+
+Version 1.1
+
+Version history:
+1.0 - 2015-03-16 - initial version
+1.1 - 2015-03-19 - added InvalidUser fault
+                 - removed UsernameProblem and added one type for each fault
+                 - removed nillable=true definitions
+                 - created empty complex types for empty responses to enable wrapper style
+-->
+
+<wsdl:definitions name="SdId"
+  targetNamespace="urn:pt:ulisboa:tecnico:sdis:id:ws"
+  xmlns:tns="urn:pt:ulisboa:tecnico:sdis:id:ws"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:soaphttp="http://schemas.xmlsoap.org/soap/http"
+  xmlns:wsamd="http://www.w3.org/2007/05/addressing/metadata">
+
+  <wsdl:types>
+
+    <!--
+    Data type definitions
+    -->
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
+      targetNamespace="urn:pt:ulisboa:tecnico:sdis:id:ws">
+
+      <xs:complexType name="createUser">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+          <xs:element name="emailAddress" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="createUser" type="tns:createUser"/>
+
+      <xs:complexType name="createUserResponse" />
+      <xs:element name="createUserResponse" type="tns:createUserResponse"/>
+
+      <xs:element name="renewPassword" type="tns:renewPassword"/>
+      <xs:complexType name="renewPassword">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="renewPasswordResponse" />
+      <xs:element name="renewPasswordResponse" type="tns:renewPasswordResponse"/>
+
+      <xs:element name="removeUser" type="tns:removeUser"/>
+      <xs:complexType name="removeUser">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:complexType name="removeUserResponse" />
+      <xs:element name="removeUserResponse" type="tns:removeUserResponse"/>
+
+      <xs:element name="requestAuthentication" type="tns:requestAuthentication" />
+      <xs:complexType name="requestAuthentication">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string"/>
+          <xs:element name="reserved" type="xs:base64Binary" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+
+      <xs:element name="requestAuthenticationResponse" type="tns:requestAuthenticationResponse" />
+      <xs:complexType name="requestAuthenticationResponse">
+        <xs:sequence>
+          <xs:element name="credentials" type="xs:base64Binary" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the provided user id is syntactically invalid.
+      -->
+      <xs:element name="InvalidUser" type="tns:InvalidUser" />
+      <xs:complexType name="InvalidUser">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the user id already exists.
+      -->
+      <xs:element name="UserAlreadyExists" type="tns:UserAlreadyExists" />
+      <xs:complexType name="UserAlreadyExists">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the user id does not exist.
+      -->
+      <xs:element name="UserDoesNotExist" type="tns:UserDoesNotExist" />
+      <xs:complexType name="UserDoesNotExist">
+        <xs:sequence>
+          <xs:element name="userId" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the provided email address already exists.
+      -->
+      <xs:element name="EmailAlreadyExists" type="tns:EmailAlreadyExists" />
+      <xs:complexType name="EmailAlreadyExists">
+        <xs:sequence>
+          <xs:element name="emailAddress" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the provided email address is syntactically invalid.
+      -->
+      <xs:element name="InvalidEmail" type="tns:InvalidEmail" />
+      <xs:complexType name="InvalidEmail">
+        <xs:sequence>
+          <xs:element name="emailAddress" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+      <!--
+      Fault element when the authentication request fails on the server side.
+      -->
+      <xs:element name="AuthReqFailed" type="tns:AuthReqFailed" />
+      <xs:complexType name="AuthReqFailed">
+        <xs:sequence>
+          <xs:element name="reserved" type="xs:base64Binary" minOccurs="0" />
+        </xs:sequence>
+      </xs:complexType>
+
+    </xs:schema>
+  </wsdl:types>
+
+  <!--
+  The messages below use the elements defined in the xs:schema
+  -->
+  <wsdl:message name="createUser">
+    <wsdl:part name="parameters" element="tns:createUser"/>
+  </wsdl:message>
+  <wsdl:message name="createUserResponse">
+    <wsdl:part name="parameters" element="tns:createUserResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="renewPassword">
+    <wsdl:part name="parameters" element="tns:renewPassword"/>
+  </wsdl:message>
+  <wsdl:message name="renewPasswordResponse">
+    <wsdl:part name="parameters" element="tns:renewPasswordResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="removeUser">
+    <wsdl:part name="parameters" element="tns:removeUser"/>
+  </wsdl:message>
+  <wsdl:message name="removeUserResponse">
+    <wsdl:part name="parameters" element="tns:removeUserResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="requestAuthentication">
+    <wsdl:part name="parameters" element="tns:requestAuthentication"/>
+  </wsdl:message>
+  <wsdl:message name="requestAuthenticationResponse">
+    <wsdl:part name="parameters" element="tns:requestAuthenticationResponse"/>
+  </wsdl:message>
+
+  <wsdl:message name="InvalidUser">
+    <wsdl:part name="fault" element="tns:InvalidUser" />
+  </wsdl:message>
+
+  <wsdl:message name="UserAlreadyExists">
+    <wsdl:part name="fault" element="tns:UserAlreadyExists" />
+  </wsdl:message>
+
+  <wsdl:message name="UserDoesNotExist">
+    <wsdl:part name="fault" element="tns:UserDoesNotExist" />
+  </wsdl:message>
+
+  <wsdl:message name="EmailAlreadyExists">
+    <wsdl:part name="fault" element="tns:EmailAlreadyExists" />
+  </wsdl:message>
+
+  <wsdl:message name="InvalidEmail">
+    <wsdl:part name="fault" element="tns:InvalidEmail" />
+  </wsdl:message>
+
+  <wsdl:message name="AuthReqFailed">
+    <wsdl:part name="fault" element="tns:AuthReqFailed" />
+  </wsdl:message>
+
+
+  <wsdl:portType name="SDId">
+
+    <!--
+    Creates a new user. A new random password is generated for the new user,
+    which should be delivered to the user through some secure channel.
+    Faults: user id is invalid, user id already exists, 
+    invalid email address, email address already registered to other user
+    -->
+    <wsdl:operation name="createUser">
+      <wsdl:input message="tns:createUser" name="createUser"/>
+      <wsdl:output message="tns:createUserResponse" name="createUserResponse"/>
+      <wsdl:fault message="tns:InvalidEmail" name="InvalidEmail" />
+      <wsdl:fault message="tns:EmailAlreadyExists" name="EmailAlreadyExists" />
+      <wsdl:fault message="tns:InvalidUser" name="InvalidUser" />
+      <wsdl:fault message="tns:UserAlreadyExists" name="UserAlreadyExists" />
+    </wsdl:operation>
+
+    <!--
+    Renews the user's password, replacing the previous password with
+    a new randomly-generated password.
+    The new password is delivered to the user through some secure channel.
+    Faults: user id is not associated with any registered user.
+    -->
+    <wsdl:operation name="renewPassword">
+      <wsdl:input message="tns:renewPassword" name="renewPassword"/>
+      <wsdl:output message="tns:renewPasswordResponse" name="renewPasswordResponse"/>
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+    </wsdl:operation>
+
+    <!--
+    Removes the user from the system.
+    Faults: user id is not registered in the system
+    -->
+    <wsdl:operation name="removeUser">
+      <wsdl:input message="tns:removeUser" name="removeUser"/>
+      <wsdl:output message="tns:removeUserResponse" name="removeUserResponse"/>
+      <wsdl:fault message="tns:UserDoesNotExist" name="UserDoesNotExist" />
+    </wsdl:operation>
+
+    <!--
+    Requests user authentication. A correct request should be issued by a client
+    representing the user indicated in the userId argument.
+    A user authentication request carries a second argument of type byte[] and
+    returns credentials that are necessary to complete authentication, also as byte[].
+    The exact definition of what information the arguments and
+    return carry is determined by the actual authentication protocol being used.
+    Fault: Authentication request failed on the server side.
+    -->
+    <wsdl:operation name="requestAuthentication">
+      <wsdl:input message="tns:requestAuthentication" name="requestAuthentication"/>
+      <wsdl:output message="tns:requestAuthenticationResponse" name="requestAuthenticationResponse"/>
+      <wsdl:fault message="tns:AuthReqFailed" name="AuthReqFailed" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="SDIdServiceSoapBinding" type="tns:SDId">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+    <wsdl:operation name="createUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidEmail">
+        <soap:fault name="InvalidEmail" use="literal" />
+      </wsdl:fault>
+      <wsdl:fault name="EmailAlreadyExists">
+        <soap:fault name="EmailAlreadyExists" use="literal" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUser">
+        <soap:fault name="InvalidUser" use="literal" />
+      </wsdl:fault>
+      <wsdl:fault name="UserAlreadyExists">
+        <soap:fault name="UserAlreadyExists" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="renewPassword">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+
+    </wsdl:operation>
+    <wsdl:operation name="removeUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="UserDoesNotExist">
+        <soap:fault name="UserDoesNotExist" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="requestAuthentication">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthReqFailed">
+        <soap:fault name="AuthReqFailed" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="SDId">
+    <wsdl:port name="SDIdImplPort" binding="tns:SDIdServiceSoapBinding">
+      <soap:address location="http://localhost:8080/id-ws/endpoint"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>
